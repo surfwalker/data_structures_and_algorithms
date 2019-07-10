@@ -4,9 +4,7 @@ def reverse_array1(arr):
 
 def reverse_array2(arr):
     half = len(arr) // 2
-
     right = -1
-
     for left in range(half):
         arr[left], arr[right] = arr[right], arr[left]
         right -= 1
