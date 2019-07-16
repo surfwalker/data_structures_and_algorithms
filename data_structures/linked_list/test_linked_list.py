@@ -26,7 +26,7 @@ def test_add_to_empty_check_next():
     ll.insert('camel')
     assert ll.head.next is None
 
-def test_insert_falafel_to_cucumber():
+def test_insert_donkey_to_monkey_to_cucumber():
     ll = LinkedList()
     ll.insert('donkey')
     ll.insert('monkey')
@@ -59,8 +59,47 @@ def test__str__():
     ll.insert('donkey')
     ll.insert('monkey')
     ll.insert('camel')
-    assert ll.__str__() == 'camel, monkey, donkey, '
+    assert ll.__str__() == 'camelmonkeydonkey'
 
 def test_empty__str__():
     ll = LinkedList()
     assert ll.__str__() == ''
+
+def test_append_new_node_to_end_of_linked_list():
+    ll = LinkedList()
+    ll.insert([2])
+    ll.insert([3])
+    ll.insert([1])
+    ll.append([5])
+    assert ll.__str__() == '[1][3][2][5]'
+
+def test_append_new_node_to_empty_linked_list():
+    ll = LinkedList()
+    ll.append([1])
+    assert ll.__str__() == '[1]'
+
+def test_insert_before():
+    ll = LinkedList()
+    ll.append([1])
+    ll.append([3])
+    ll.append([2])
+    ll.insert_before([3], [5])
+    assert ll.__str__() == '[1][5][3][2]'
+
+def test_insert_before_into_empty_linked_list():
+    ll = LinkedList()
+    ll.insert_before([3], [5])
+    assert ll.__str__() == '[5]'
+
+def test_insert_after():
+    ll = LinkedList()
+    ll.append([1])
+    ll.append([3])
+    ll.append([2])
+    ll.insert_after([3], [5])
+    assert ll.__str__() == '[1][3][5][2]'
+
+def test_insert_after_into_empty_linked_list():
+    ll = LinkedList()
+    ll.insert_before([3], [5])
+    assert ll.__str__() == '[5]'
