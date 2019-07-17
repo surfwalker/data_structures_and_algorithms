@@ -103,3 +103,35 @@ def test_insert_after_into_empty_linked_list():
     ll = LinkedList()
     ll.insert_before([3], [5])
     assert ll.__str__() == '[5]'
+
+def test_ll_kth_from_end_animals():
+    ll = LinkedList()
+    ll.append('donkey')
+    ll.append('monkey')
+    ll.append('camel')
+    ll.append('sloth')
+    ll.append('shark')
+    ll.append('golden unicorn')
+    ll.append('kitteh')
+    assert ll.ll_kth_from_end(1) == 'kitteh'
+    assert ll.ll_kth_from_end(2) == 'golden unicorn'
+    assert ll.ll_kth_from_end(3) == 'shark'
+    assert ll.ll_kth_from_end(4) == 'sloth'
+    assert ll.ll_kth_from_end(5) == 'camel'
+    assert ll.ll_kth_from_end(6) == 'monkey'
+    assert ll.ll_kth_from_end(7) == 'donkey'
+
+def test_ll_kth_from_end_integers():
+    ll = LinkedList()
+    ll.append(1)
+    ll.append(3)
+    ll.append(8)
+    ll.append(2)
+    assert ll.ll_kth_from_end(0) == 2
+    assert ll.ll_kth_from_end(2) == 3
+    assert ll.ll_kth_from_end(6) == 'exception'
+
+def test_ll_kth_from_end_one_value():
+    ll = LinkedList()
+    ll.append(1)
+    assert ll.ll_kth_from_end(1) == 1
