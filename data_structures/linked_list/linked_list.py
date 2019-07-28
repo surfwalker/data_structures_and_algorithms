@@ -52,24 +52,6 @@ class LinkedList:
             current.next = new_node
             self.size += 1
 
-    # def append(self, val):
-    #     """Append a node to the end of the list."""
-    #     if type(val) is not int:
-    #         raise Exception('Please enter an integer.')
-    #     try:
-    #         if self.head is None:
-    #             self.insert(val)
-    #         else:
-    #             search = self.head
-    #             while search:
-    #                 if search._next is None:
-    #                     search._next = Node(val)
-    #                     self._size += 1
-    #                     break
-    #                 search = search._next
-    #     except (ValueError, KeyError):
-    #         raise Exception('That is not a valid value!')
-
     def insert_before(self, value, new_value):
         # need to add exception for if value does not exist
         new_node = Node(new_value)
