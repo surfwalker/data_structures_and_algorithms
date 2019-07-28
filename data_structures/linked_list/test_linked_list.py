@@ -1,4 +1,5 @@
 from linked_list import LinkedList
+import pytest, sys
 
 def test_exists():
     assert LinkedList
@@ -26,7 +27,7 @@ def test_add_to_empty_check_next():
     ll.insert('camel')
     assert ll.head.next is None
 
-def test_insert_donkey_to_monkey_to_cucumber():
+def test_insert_multiple():
     ll = LinkedList()
     ll.insert('donkey')
     ll.insert('monkey')
@@ -59,7 +60,7 @@ def test__str__():
     ll.insert('donkey')
     ll.insert('monkey')
     ll.insert('camel')
-    assert ll.__str__() == 'camelmonkeydonkey'
+    assert ll.__str__() == 'camel, monkey, donkey, '
 
 def test_empty__str__():
     ll = LinkedList()
@@ -71,12 +72,12 @@ def test_append_new_node_to_end_of_linked_list():
     ll.insert([3])
     ll.insert([1])
     ll.append([5])
-    assert ll.__str__() == '[1][3][2][5]'
+    assert ll.__str__() == '[1], [3], [2], [5], '
 
 def test_append_new_node_to_empty_linked_list():
     ll = LinkedList()
     ll.append([1])
-    assert ll.__str__() == '[1]'
+    assert ll.__str__() == '[1], '
 
 def test_insert_before():
     ll = LinkedList()
@@ -84,12 +85,12 @@ def test_insert_before():
     ll.append([3])
     ll.append([2])
     ll.insert_before([3], [5])
-    assert ll.__str__() == '[1][5][3][2]'
+    assert ll.__str__() == '[1], [5], [3], [2], '
 
 def test_insert_before_into_empty_linked_list():
     ll = LinkedList()
     ll.insert_before([3], [5])
-    assert ll.__str__() == '[5]'
+    assert ll.__str__() == '[5], '
 
 def test_insert_after():
     ll = LinkedList()
@@ -97,12 +98,12 @@ def test_insert_after():
     ll.append([3])
     ll.append([2])
     ll.insert_after([3], [5])
-    assert ll.__str__() == '[1][3][5][2]'
+    assert ll.__str__() == '[1], [3], [5], [2], '
 
 def test_insert_after_into_empty_linked_list():
     ll = LinkedList()
     ll.insert_before([3], [5])
-    assert ll.__str__() == '[5]'
+    assert ll.__str__() == '[5], '
 
 def test_ll_kth_from_end_animals():
     ll = LinkedList()
@@ -113,13 +114,13 @@ def test_ll_kth_from_end_animals():
     ll.append('shark')
     ll.append('golden unicorn')
     ll.append('kitteh')
-    assert ll.ll_kth_from_end(1) == 'kitteh'
-    assert ll.ll_kth_from_end(2) == 'golden unicorn'
-    assert ll.ll_kth_from_end(3) == 'shark'
-    assert ll.ll_kth_from_end(4) == 'sloth'
-    assert ll.ll_kth_from_end(5) == 'camel'
-    assert ll.ll_kth_from_end(6) == 'monkey'
-    assert ll.ll_kth_from_end(7) == 'donkey'
+    assert ll.ll_kth_from_end(0) == 'kitteh'
+    assert ll.ll_kth_from_end(1) == 'golden unicorn'
+    assert ll.ll_kth_from_end(2) == 'shark'
+    assert ll.ll_kth_from_end(3) == 'sloth'
+    assert ll.ll_kth_from_end(4) == 'camel'
+    assert ll.ll_kth_from_end(5) == 'monkey'
+    assert ll.ll_kth_from_end(6) == 'donkey'
 
 def test_ll_kth_from_end_integers():
     ll = LinkedList()
@@ -128,8 +129,9 @@ def test_ll_kth_from_end_integers():
     ll.append(8)
     ll.append(2)
     assert ll.ll_kth_from_end(0) == 2
+    assert ll.ll_kth_from_end(1) == 8
     assert ll.ll_kth_from_end(2) == 3
-    assert ll.ll_kth_from_end(6) == 'exception'
+    assert ll.ll_kth_from_end(3) == 1
 
 def test_ll_kth_from_end_one_value():
     ll = LinkedList()

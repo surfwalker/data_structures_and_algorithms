@@ -1,12 +1,28 @@
+from node import Node
+
 class LinkedList:
 
-    def __init__(self):
+    def __init__(self, iterable=[]):
+        """
+        Initialize Linked List.
+        """
         self.head = None
+        self.size = 0
+        if iterable:
+            for value in iterable:
+                self.insert(value)
 
-    def insert(self, value):
-        self.head = Node(value, self.head)
+    def insert(self, val):
+        """
+        Insert an item into Linked List.
+        """
+        self.head = Node(val, self.head)
+        self.size += 1
 
     def includes(self, value):
+        """
+        Check if Linked List includes a specific value.
+        """
         current = self.head
         while current:
             if current.value == value:
@@ -15,22 +31,44 @@ class LinkedList:
         return False
 
     def __str__(self):
+        """
+        Return all values of each Node in Linked List as a string.
+        """
         returned_str = ''
         current = self.head
         while current:
-            returned_str += f'{current.value}'
+            returned_str += f'{current.value}, '
             current = current.next
         return returned_str
 
     def append(self, value):
         new_node = Node(value)
         if self.head == None:
-            self.head = new_node
+            self.insert(value)
         else:
             current = self.head
             while current.next != None:
                 current = current.next
             current.next = new_node
+            self.size += 1
+
+    # def append(self, val):
+    #     """Append a node to the end of the list."""
+    #     if type(val) is not int:
+    #         raise Exception('Please enter an integer.')
+    #     try:
+    #         if self.head is None:
+    #             self.insert(val)
+    #         else:
+    #             search = self.head
+    #             while search:
+    #                 if search._next is None:
+    #                     search._next = Node(val)
+    #                     self._size += 1
+    #                     break
+    #                 search = search._next
+    #     except (ValueError, KeyError):
+    #         raise Exception('That is not a valid value!')
 
     def insert_before(self, value, new_value):
         # need to add exception for if value does not exist
@@ -38,12 +76,14 @@ class LinkedList:
 
         if self.head == None:
             self.head = new_node
+            self.size += 1
         else:
             current = self.head
             while current.next != None:
                 if current.next.value == value:
                     new_node.next = current.next
                     current.next = new_node
+                    self.size += 1
                     break
                 else:
                     current = current.next
@@ -54,6 +94,7 @@ class LinkedList:
 
         if self.head == None:
             self.head = new_node
+            self.size += 1
         else:
             current = self.head
             while current.next:
@@ -61,6 +102,7 @@ class LinkedList:
                     new_node.next = current.next.next
                     current = current.next
                     current.next = new_node
+                    self.size += 1
                     break
                 else:
                     current = current.next
@@ -71,17 +113,10 @@ class LinkedList:
             return 'Value entered must be an integer.'
         if not self.head:
             return 'This is an empty linked list.'
-        linked_list_length = []
+        ll_length = self.size
         current = self.head
-        while current:
-            linked_list_length.append(current.value)
+        # if k > ll_length:
+        #     return 'Value entered is larger than the length of the linked list.'
+        for i in range((ll_length - 1) - k):
             current = current.next
-        if k > len(linked_list_length):
-            return 'Value entered is larger than the length of the linked list.'
-        
-        return linked_list_length[len(linked_list_length) - k]
-
-class Node:
-    def __init__(self, value, next=None):
-        self.value = value
-        self.next = next
+        return current.value
