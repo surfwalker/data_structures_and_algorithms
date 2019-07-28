@@ -26,7 +26,7 @@ def test_add_to_empty_check_next():
     ll.insert('camel')
     assert ll.head.next is None
 
-def test_insert_falafel_to_cucumber():
+def test_insert_multiple():
     ll = LinkedList()
     ll.insert('donkey')
     ll.insert('monkey')
