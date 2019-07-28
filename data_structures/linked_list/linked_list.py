@@ -97,8 +97,6 @@ class LinkedList:
             return 'This is an empty linked list.'
         ll_length = self.size
         current = self.head
-        # if k > ll_length:
-        #     return 'Value entered is larger than the length of the linked list.'
         for i in range((ll_length - 1) - k):
             current = current.next
         return current.value
