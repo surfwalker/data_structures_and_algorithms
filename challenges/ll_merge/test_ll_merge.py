@@ -53,9 +53,9 @@ def test_ll_merge_different_lengths():
 def test_ll_merge_one_empty():
     
     animals = LinkedList()
-    animals.insert('apples')
-    animals.insert('bananas')
-    animals.insert('pears')
+    animals.insert('monkey')
+    animals.insert('donkey')
+    animals.insert('camel')
 
     waves = LinkedList()
 
