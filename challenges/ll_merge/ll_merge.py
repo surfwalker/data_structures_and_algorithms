@@ -1,14 +1,16 @@
-def ll_merge(self, ll_2):
+from linked_list import LinkedList
 
-    if not self.head and not ll_2.head:
+def ll_merge(ll_1, ll_2):
+
+    if not ll_1.head and not ll_2.head:
         return 'Both linked lists are empty'
-    elif self.head and not ll_2.head:
-        return self.head
-    elif ll_2.head and not self.head:
+    elif ll_1.head and not ll_2.head:
+        return ll_1.head
+    elif ll_2.head and not ll_1.head:
         return ll_2.head
 
-    if self.head and ll_2.head:
-        current_1 = self.head
+    if ll_1.head and ll_2.head:
+        current_1 = ll_1.head
         current_2 = ll_2.head
 
         while current_1.next is not None and current_2.next is not None:
@@ -23,10 +25,10 @@ def ll_merge(self, ll_2):
 
         if current_1.next is None and current_2:
             current_1.next = current_2
-            return self.head
+            return ll_1.head
             
         if current_2.next is None and current_1:
             pointer_1 = current_1.next
             current_1.next = current_2
             current_2.next = pointer_1
-            return self.head
+            return ll_1.head
