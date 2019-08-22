@@ -1,19 +1,11 @@
-class LinkedList:
-    def __init__(self):
-        self.head = None
-    
-    def insert(self, val):
-        self.head = Node(val, self.head)
-
 class Node:
-    def __init__(self, val, next=None):
-        self.val = val
-        self.next = next
+    def __init__(self, value, next=None):
+        self.value = value
+        self.next = None
 
 class Stack:
 
     def __init__(self):
-        self.lst = LinkedList()
         self.top = None
 
     def peek(self):
@@ -22,27 +14,110 @@ class Stack:
         else:
             return None
 
-    def pop(self):
-        pass
-
     def push(self, value):
-        self.top = Node(val, self.top)
-        
+        node = Node(value)
+        node.next = self.top
+        self.top = node
 
+    def pop(self):
+        if self.peek():
+          node = self.top
+          self.top = self.top.next
+          return node.value
+        else:
+          return None
 
 class Quezee():
-    # peek
-    # enqueue
-    # dequeue
 
     def __init__(self):
-        self.lst = LinkedList()
+      self.front = None
 
     def peek(self):
-        return self.lst.head and self.lst.head.val
+      if self.front:
+        return self.front.value
+      else:
+        return None
 
     def enqueue(self, value):
-        self.lst.insert(value)
+      node = Node(value)
+      if self.front == None:
+        self.front = node
+        return
     
     def dequeue(self):
-        pass
+      if self.peek():
+        node = self.front
+        self.front = self.front.next
+        return node.value
+      else:
+        return None
+
+# Raven
+# class Stack:
+
+#   def pop(self):
+#     if self.top.value != None:
+#       place_holder = self.top.value
+#       self.top = self.top.next
+#       return place_holder
+#     else:
+#       raise ValueError('This is an empty stack!')
+  
+#   def peek(self):
+#     if self.top.value != None:
+#       return self.top.value
+#     else:
+#       raise ValueError('This is an empty stack!')
+
+# class Queue:
+
+#   def __init__(self, container = []):
+#     self.front = None
+#     self.back = None
+
+#     try:
+#       for item in container:
+#         self.enqueue(item)
+#     except ValueError:
+#       print('Value error! Please try again')
+    
+#   def enqueue(self, value):
+    
+#     new_node = Node(value)
+
+#     if not self.front:
+#       self.front = new_node
+#       self.back = new_node
+#     else:
+#       current = self.front
+#       while current.next:
+#         current = current.next
+      
+#       current.next = new_node
+#       self.back = current.next
+
+#   def dequeue(self):
+
+#     if not self.front:
+#       return None
+#     if self.front:
+#       current = self.front
+#       self.front = self.front.next
+#       current.next = None
+#       return current.value
+#     else:
+#       if self.back is not None:
+#         self.back = None
+#       raise ValueError('Empty Queue')
+  
+#   def peek_queue(self):
+
+#     if self.front:
+#       return self.front.value
+#     else:
+#       raise ValueError('You have reached an empty queue.')
+ 
+# class Node:
+#   def __init__(self, value, next=None):
+#       self.value = value
+#       self.next = next
