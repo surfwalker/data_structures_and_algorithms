@@ -1,4 +1,8 @@
-from binary_tree import Node
+from node import Node
+import pytest
 
-def test_exist():
+def test_Node_class_exists():
     assert Node
+
+def test_Node_instantiation():
+    assert Node('value')
