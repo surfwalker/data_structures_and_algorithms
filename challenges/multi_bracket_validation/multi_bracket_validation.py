@@ -1,4 +1,4 @@
-from node_linked_list_stack import Stack
+from stack import Node, Stack
 
 class BracketValidation(object):
 
