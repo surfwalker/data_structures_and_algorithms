@@ -1,19 +1,11 @@
-class LinkedList:
-    def __init__(self):
-        self.head = None
-    
-    def insert(self, val):
-        self.head = Node(val, self.head)
-
 class Node:
-    def __init__(self, val, next=None):
-        self.val = val
-        self.next = next
+    def __init__(self, value, next=None):
+        self.value = value
+        self.next = None
 
 class Stack:
 
     def __init__(self):
-        self.lst = LinkedList()
         self.top = None
 
     def peek(self):
@@ -22,27 +14,40 @@ class Stack:
         else:
             return None
 
-    def pop(self):
-        pass
-
     def push(self, value):
-        self.top = Node(val, self.top)
-        
+        node = Node(value)
+        node.next = self.top
+        self.top = node
 
+    def pop(self):
+        if self.peek():
+          node = self.top
+          self.top = self.top.next
+          return node.value
+        else:
+          return None
 
 class Quezee():
-    # peek
-    # enqueue
-    # dequeue
 
     def __init__(self):
-        self.lst = LinkedList()
+      self.front = None
 
     def peek(self):
-        return self.lst.head and self.lst.head.val
+      if self.front:
+        return self.front.value
+      else:
+        return None
 
     def enqueue(self, value):
-        self.lst.insert(value)
+      node = Node(value)
+      if self.front == None:
+        self.front = node
+        return
     
     def dequeue(self):
-        pass
+      if self.peek():
+        node = self.front
+        self.front = self.front.next
+        return node.value
+      else:
+        return None
