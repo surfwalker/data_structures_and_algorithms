@@ -1,4 +1,5 @@
-from tree import BinaryTree
+from binary_tree import BinaryTree
+from node import Node
 
 def fizz_buzz_tree(tree):
 
