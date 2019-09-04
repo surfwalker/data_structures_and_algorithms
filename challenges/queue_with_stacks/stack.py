@@ -26,28 +26,3 @@ class Stack:
           return node.value
         else:
           return None
-
-class Quezee():
-
-    def __init__(self):
-      self.front = None
-
-    def peek(self):
-      if self.front:
-        return self.front.value
-      else:
-        return None
-
-    def enqueue(self, value):
-      node = Node(value)
-      if self.front == None:
-        self.front = node
-        return
-    
-    def dequeue(self):
-      if self.peek():
-        node = self.front
-        self.front = self.front.next
-        return node.value
-      else:
-        return None

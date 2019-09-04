@@ -89,7 +89,6 @@ class LinkedList:
                 else:
                     current = current.next
 
-    # I obtained some help in creating this method from the following site https://codereview.stackexchange.com/questions/114817/node-link-node-link-node-linking-nodes-into-a-linkedlist
     def ll_kth_from_end(self, k):
         if type(k) is not int:
             return 'Value entered must be an integer.'
